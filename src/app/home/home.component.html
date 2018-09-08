@@ -1,0 +1,47 @@
+<div class="row">
+  <div class="col-lg-3 col-xs-6">
+    <div class="small-box bg-aqua">
+      <div class="inner">
+        <h3>{{posts}}</h3>
+
+        <p>Posts</p>
+      </div>
+      <div class="icon">
+        <i class="ion ion-bag"></i>
+      </div>
+      <a href="#" [routerLink]="['/admin/posts']" class="small-box-footer">More info
+        <i class="fa fa-arrow-circle-right"></i>
+      </a>
+    </div>
+  </div>
+  <div class="col-lg-3 col-xs-6">
+    <div class="small-box bg-orange">
+      <div class="inner">
+        <h3>{{categories}}</h3>
+
+        <p>Categories</p>
+      </div>
+      <div class="icon">
+        <i class="ion ion-bag"></i>
+      </div>
+      <a href="#" [routerLink]="['/admin/category/main']" class="small-box-footer">More info
+        <i class="fa fa-arrow-circle-right"></i>
+      </a>
+    </div>
+  </div>
+  <div class="col-lg-3 col-xs-6">
+    <div class="small-box bg-teal">
+      <div class="inner">
+        <h3>{{languages}}</h3>
+
+        <p>Languages</p>
+      </div>
+      <div class="icon">
+        <i class="ion ion-bag"></i>
+      </div>
+      <a href="#" [routerLink]="['/admin/settings/language']" class="small-box-footer">More info
+        <i class="fa fa-arrow-circle-right"></i>
+      </a>
+    </div>
+  </div>
+</div>

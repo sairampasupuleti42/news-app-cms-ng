@@ -1,0 +1,67 @@
+<mk-box header="" [isCollapsable]="false" [isRemovable]="false">
+  <mk-box-header></mk-box-header>
+  <mk-box-tools>
+    <a [routerLink]="['../list']" class="btn btn-danger btn-flat btn-sm pull-right">Back</a>
+  </mk-box-tools>
+  <mk-box-content>
+    <form [formGroup]="languageForm" class=" form-horizontal">
+      <div class="row">
+        <div class="col-md-6">
+          <div  *ngIf="entryError" class="alert alert-info">
+              <h4><i class="icon fa fa-info"></i> {{entryErrorMsg}} !</h4>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label class="control-label col-sm-4">
+            Language Name <span class="text-danger">*</span>
+          </label>
+          <div class="col-sm-8">
+            <input type="text" class="form-control" (keyup)="slugify($event.target.value)" formControlName="name" [ngClass]="{ 'is-invalid': submitted && f.name.errors }"
+              name="name" id="language_name" placeholder=" Enter Language Name" value="" />
+            <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+              <div *ngIf="f.name.errors.required" class="text-danger">Language is required</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="clearfix"></div>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label class="control-label col-sm-4">
+             Permalink <span class="text-danger">*</span>
+          </label>
+          <div class="col-sm-8">
+            <input type="text" class="form-control" formControlName="permalink" [ngClass]="{ 'is-invalid': submitted && f.permalink.errors }"
+              name="name" id="permalink" placeholder=" Enter Language Link" value="" />
+            <div *ngIf="submitted && f.permalink.errors" class="invalid-feedback">
+              <div *ngIf="f.permalink.errors.required" class="text-danger">Language Link is required</div>
+            </div>
+            <span class="text-info">
+              Ex. your language name (in english)
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="clearfix"></div>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label class="control-label col-sm-4">
+            Status
+          </label>
+          <div class="col-sm-8">
+            <select class="form-control" formControlName="status" name="status" id="status">
+              <option [value]="st.id" *ngFor="let st of status">{{st.name}}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </form>
+  </mk-box-content>
+  <mk-box-footer>
+    <div class="col-sm-6 col-sm-offset-2">
+      <button class="btn btn-success" [disabled]="submitted" (click)="save()">Save</button>
+    </div>
+  </mk-box-footer>
+</mk-box>

@@ -1,0 +1,36 @@
+<mk-box [isCollapsable]="false" [isRemovable]="false">
+  <mk-box-header>Categories</mk-box-header>
+  <mk-box-tools>
+    <a [routerLink]="['../add']" class="btn btn-primary btn-flat btn-sm pull-right">Create category</a>
+  </mk-box-tools>
+  <mk-box-content>
+    <table class="table table-bordered table-hover">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Language</th>
+          <th>Parent Category</th>
+          <th>Category </th>
+          <th>Status</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let category of categories;let i=index">
+          <td>{{i+1}}</td>
+          <td>{{category.language}}</td>
+          <td>{{(category.parent) ? category.parent:'NA'}}</td>
+          <td>{{category.name}}</td>
+          <td>
+            <label for="" class="label label-success">Active</label>
+          </td>
+          <td>
+            <a class="btn btn-sm btn-flat btn-info" [routerLink]="['../edit/',category.id]"><i class="fa fa-edit"></i></a>
+            <a class="btn btn-sm btn-flat btn-danger" (click)="deleteCategory(category.id,i)"><i class="fa fa-trash"></i></a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </mk-box-content>
+  <mk-box-footer></mk-box-footer>
+</mk-box>

@@ -1,0 +1,76 @@
+<mk-box>
+  <mk-box-header></mk-box-header>
+  <mk-box-tools>
+    <a [routerLink]="['../list']" class="btn btn-danger btn-flat  btn-sm pull-right">Back</a>
+  </mk-box-tools>
+  <mk-box-content>
+    <form class="form-horizontal" id="roleForm" method="POST" enctype="multipart/form-data">
+
+      <div class="clearfix"></div>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label class="control-label col-sm-4">
+            Select Category
+          </label>
+          <div class="col-sm-8">
+            <select name="category_parent_id" class="form-control">
+              <option value="">--Select Category--</option>
+              <option value="1">Categiry 1</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="clearfix"></div>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label class="control-label col-sm-4">
+            Category Name (en)<span class="text-danger">*</span>
+          </label>
+          <div class="col-sm-8">
+            <input type="text" class="form-control required" name="category_name" id="category_name" placeholder=" Enter Category Name"
+              value="" />
+          </div>
+        </div>
+      </div>
+      <div class="clearfix"></div>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label class="control-label col-sm-4">
+            Category Name (te)<span class="text-danger">*</span>
+          </label>
+          <div class="col-sm-8">
+            <input type="text" class="form-control required" name="category_name" id="category_name" placeholder=" Enter Category Name"
+              value="" />
+          </div>
+        </div>
+      </div>
+      <div class="clearfix"></div>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label class="control-label col-sm-4">
+            Category Name (hi)<span class="text-danger">*</span>
+          </label>
+          <div class="col-sm-8">
+            <input type="text" class="form-control required" name="category_name" id="category_name" placeholder=" Enter Category Name"
+              value="" />
+          </div>
+        </div>
+      </div>
+      <div class="clearfix"></div>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label class="control-label col-sm-4">
+            Category Image
+          </label>
+          <div class="col-sm-8">
+            <input type="file" class="form-control " name="category_image" id="category_image" />
+          </div>
+        </div>
+      </div>
+      <div class="clearfix"></div>
+      <div class="col-sm-6 col-sm-offset-2">
+        <button class="btn btn-success">Save</button>
+      </div>
+    </form>
+  </mk-box-content>
+</mk-box>

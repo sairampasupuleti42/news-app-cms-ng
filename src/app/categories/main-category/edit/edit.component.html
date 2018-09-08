@@ -1,0 +1,126 @@
+<mk-box header="" [isCollapsable]="false" [isRemovable]="false">
+  <mk-box-header></mk-box-header>
+  <mk-box-tools>
+    <a [routerLink]="['./../../list']" class="btn btn-danger btn-flat btn-sm pull-right">Back</a>
+  </mk-box-tools>
+  <mk-box-content>
+    <form [formGroup]="categoryForm">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="alert alert-danger" *ngIf="entryError">
+            {{entryErrorMsg}}
+            <button class="pull-right" data-toggle="tooltip" data-placement="left" style="
+               color: rgb(255, 255, 255); 
+               font-size: 20px;border:none;
+               background: none;
+               border: none;
+               margin-top: -5px;" (click)="closeAlert()">×</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 sub">
+        <div class="form-group">
+          <label class="control-label col-sm-4">
+            Select Language
+          </label>
+          <div class="col-sm-8">
+            <select name="parent_id" formControlName="language_id"  (change)="onChangeLanguage($event.target.value)"
+              class="form-control" [ngClass]="{ 'is-invalid': submitted && f.language_id.errors }">
+              <option value="">--Select language--</option>
+              <option *ngFor="let language of languages" [value]="language.id">{{language.name}}</option>
+            </select>
+            <div *ngIf="submitted && f.language_id.errors" class="invalid-feedback">
+              <div *ngIf="f.language_id.errors.required" class="text-danger">Language is required</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="clearfix"></div>
+      <div class="col-sm-6 ">
+        <div class="form-group">
+          <label class="control-label col-sm-12">
+            Select category type (Check if Sub category)
+            <input type="checkbox" (change)="checkCategoryType()" />
+          </label>
+
+        </div>
+      </div>
+      <div class="clearfix"></div>
+      <div class="col-sm-6 sub" *ngIf="isSub">
+        <div class="form-group">
+          <label class="control-label col-sm-4">
+            Select Category
+          </label>
+          <div class="col-sm-8">
+            <select name="parent_id" formControlName="parent_id" (change)="onChangeCategory($event.target.value)" class="form-control">
+              <option value="">--Select Category--</option>
+              <option *ngFor="let category of categories" [ngValue]="category.id">{{category.name}}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="clearfix"></div>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label class="control-label col-sm-4">
+            Category Name <span class="text-danger">*</span>
+          </label>
+          <div class="col-sm-8">
+            <input type="text" class="form-control" (keyup)="slugify($event.target.value)" formControlName="name" [ngClass]="{ 'is-invalid': submitted && f.name.errors }"
+              name="name" id="category_name" placeholder=" Enter Category Name" value="" />
+            <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+              <div *ngIf="f.name.errors.required" class="text-danger">Category is required</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="clearfix"></div>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label class="control-label col-sm-4">
+            Category Permalink <span class="text-danger">*</span>
+          </label>
+          <div class="col-sm-8">
+            <input type="text" class="form-control" formControlName="permalink" [ngClass]="{ 'is-invalid': submitted && f.permalink.errors }"
+              name="name" id="category_name" placeholder=" Enter Category Link" value="" />
+            <div *ngIf="submitted && f.permalink.errors" class="invalid-feedback">
+              <div *ngIf="f.permalink.errors.required" class="text-danger">Category Link is required</div>
+            </div>
+            <span class="text-info">
+              Ex. your category name (in english)
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="clearfix"></div>
+      <div class="col-sm-6 hide">
+        <div class="form-group">
+          <label class="control-label col-sm-4">
+            Category Image
+          </label>
+          <div class="col-sm-8">
+            <input type="file" class="form-control" name="category_image" id="category_image" />
+          </div>
+        </div>
+      </div>
+      <div class="clearfix"></div>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label class="control-label col-sm-4">
+            Status
+          </label>
+          <div class="col-sm-8">
+            <select class="form-control" [(ngModel)]='status' formControlName="status" name="status" id="status">
+              <option [value]="st.id" *ngFor="let st of status">{{st.name}}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </form>
+  </mk-box-content>
+  <mk-box-footer>
+    <div class="col-sm-6 col-sm-offset-2">
+      <button class="btn btn-success" (click)="save()">Save</button>
+    </div>
+  </mk-box-footer>
+</mk-box>

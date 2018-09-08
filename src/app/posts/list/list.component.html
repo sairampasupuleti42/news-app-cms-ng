@@ -1,0 +1,31 @@
+<mk-box  [isCollapsable]="false" [isRemovable]="false">
+  <mk-box-header></mk-box-header>
+  <mk-box-tools>
+    <a [routerLink]="['../add']" class="btn btn-primary btn-flat btn-sm pull-right">Add post</a>
+  </mk-box-tools>
+  <mk-box-content>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Sr.no</th>
+          <th>Title</th>
+          <th>Category</th>
+          <th>Image</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let post of posts;let i=index">
+          <td>{{i+1}}</td>
+          <td>{{post.title}}</td>
+          <td>{{post.category}}</td>
+          <td><img [src]="post.image" width="50" height="50"/></td>
+          <td>
+            <a class="btn btn-sm btn-flat btn-info"  [routerLink]="['#../edit/',post.id]"><i class="fa fa-edit"></i></a>
+            <a class="btn btn-sm btn-flat btn-danger" (click)="deletePost(post.id,i)"><i class="fa fa-trash"></i></a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    </mk-box-content>
+</mk-box>

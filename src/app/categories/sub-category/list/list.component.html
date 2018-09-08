@@ -1,0 +1,41 @@
+<mk-box [isCollapsable]="false" [isRemovable]="false">
+  <mk-box-header></mk-box-header>
+  <mk-box-tools>
+    <a [routerLink]="['../add']" class="btn btn-primary btn-flat btn-sm pull-right">Create category</a>
+  </mk-box-tools>
+  <mk-box-content>
+    <table class="table table-bordered table-hover">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Parent Category</th>
+          <th>Category (en) </th>
+          <th>Category (te) </th>
+          <th>Category (hi) </th>
+          <th>Status</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>Andhrapradesh</td>
+          <td>Krishna district</td>
+          <td>కృష్ణా జిల్లా</td>
+          <td>कृष्णा जिला </td>
+          <td>
+            <label for="" class="label label-success">Active</label>
+          </td>
+          <td>
+            <a class="btn btn-sm btn-flat btn-info" [routerLink]="['../edit/1']">
+              <i class="fa fa-edit"></i>
+            </a>
+            <a class="btn btn-sm btn-flat btn-danger">
+              <i class="fa fa-trash"></i>
+            </a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </mk-box-content>
+</mk-box>
